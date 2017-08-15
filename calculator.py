@@ -34,7 +34,7 @@ def infix_to_post(s):
             b.append(stack.pop())
         return ' '.join(b)
     except:
-        eqn.set('Error')
+        return 0
 
         
         
@@ -56,7 +56,7 @@ def postfix_solve(s):
                 stack.append(i)
         return stack.pop()
     except:
-        eqn.set('Error')
+        return 0
 
         
 ###################################
@@ -70,8 +70,10 @@ def get_eqn(s):
         if s=='=':
             reverse_polish = infix_to_post(equation)
             ok = postfix_solve(reverse_polish)
-            eqn.set(ok)
+            if not ok:
+                raise ValueError
             equation=''
+            eqn.set(ok)
         elif s in '+-/*':
             equation+=" "+s+" "
             eqn.set(equation)
@@ -129,6 +131,21 @@ ttk.Button(window, text='-', command=lambda: get_eqn('-')).grid(row=3, column=3,
 ttk.Button(window, text='+', command=lambda: get_eqn('+')).grid(row=4, column=3, sticky=(N, W, E, S))
 
 
+###############################################################
+#Resizing the calculator and making the window more responsive#
+###############################################################
+
+stuff.rowconfigure(0, weight=1)
+stuff.columnconfigure(0, weight=1)
+for i in range(5):
+    window.rowconfigure(i, weight=1, pad='80')  #newlines
+    root.rowconfigure(i, weight=1, pad='80')
+for i in range(4):
+    window.columnconfigure(i, weight=1, pad='80')
+    root.columnconfigure(i, weight=1, pad='80')
+    
+    
+    
 #############################
 #Getting input from keyboard#
 #############################
