@@ -17,7 +17,13 @@ equation = ''
 def get_eqn(s):
     global equation
     try:
-        if s=='=':
+        if s == 'Del':
+            if equation!= '':
+                equation = list(equation)
+                del(equation[-1])
+                equation = ''.join(equation)
+                eqn.set(equation)        
+        elif s=='=':
             reverse_polish = rpolish.infix_to_post(equation)
             ok = rpolish.postfix_solve(reverse_polish)
             if not ok:
@@ -55,7 +61,7 @@ eqn = StringVar() #Variable for interacting with the GUI
 ########################################################
 
 stuff = ttk.Frame(window)
-stuff.grid(row=0, column=0, columnspan=3, sticky=(E))
+stuff.grid(row=0, column=0, columnspan=3, sticky=E)
 ttk.Label(stuff, textvariable=eqn).grid(row=0, column=1)
 
 
@@ -79,6 +85,7 @@ ttk.Button(window, text='/', command=lambda: get_eqn('/')).grid(row=1, column=3,
 ttk.Button(window, text='*', command=lambda: get_eqn('*')).grid(row=2, column=3, sticky=(N, W, E, S))
 ttk.Button(window, text='-', command=lambda: get_eqn('-')).grid(row=3, column=3, sticky=(N, W, E, S))
 ttk.Button(window, text='+', command=lambda: get_eqn('+')).grid(row=4, column=3, sticky=(N, W, E, S))
+ttk.Button(window, text='Del', command=lambda: get_eqn('Del')).grid(row=1, column=4, sticky=(N,W,E,S))
 
 
 ###############################################################
@@ -90,7 +97,7 @@ stuff.columnconfigure(0, weight=1)
 for i in range(5):
     window.rowconfigure(i, weight=1, pad='80')  #newlines
     root.rowconfigure(i, weight=1, pad='80')
-for i in range(4):
+for i in range(5):
     window.columnconfigure(i, weight=1, pad='80')
     root.columnconfigure(i, weight=1, pad='80')
     
@@ -117,6 +124,7 @@ root.bind('-', lambda x: get_eqn('-'))
 root.bind('+', lambda x: get_eqn('+'))
 root.bind('=', lambda x: get_eqn('='))
 root.bind('<Return>', lambda x: get_eqn('='))
+root.bind('<BackSpace>', lambda x: get_eqn('Del'))
 
 
 root.mainloop()
