@@ -1,6 +1,5 @@
 # Calculator
 
-Ongoing gui project
+Ongoing GUI Project using the tkinter module.
 
-Calculations done by converting given equation to postfix notation and solving it.
-No eval() function used.
+Calculations done by converting given equation to postfix notation and solving it using a custom eval file.
