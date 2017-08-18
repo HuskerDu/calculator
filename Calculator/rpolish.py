@@ -1,9 +1,7 @@
 from operator import add, sub, mul, truediv
 
 
-####################################################
-#Converting from infix notation to postfix notation#
-####################################################
+#Converting from infix notation to postfix notation
 
 def infix_to_post(s):
     try:
@@ -29,9 +27,8 @@ def infix_to_post(s):
         return 0
 
 
-##########################
-#Solving postfix notation#
-##########################
+
+#Solving postfix notation
 
 def postfix_solve(s):
     try:
