@@ -1,6 +1,8 @@
+#This file is used for displaying input/output of the equation in the calculator
+
 import rpolish
 
-equation=''
+equation='' 
 
 def get_eqn(s, eqn):
     global equation
