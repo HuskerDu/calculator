@@ -46,4 +46,4 @@ def postfix_solve(s):
                 stack.append(i)
         return stack.pop()
     except:
-        return 0 
+        return 'No'
