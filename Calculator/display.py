@@ -27,7 +27,7 @@ class Display:
                 reverse_polish = rpolish.infix_to_post(self.equation)    
                 ok = rpolish.postfix_solve(reverse_polish)               
                 self.equation = ''                                       
-                if 'No' in ok:                                           
+                if 'No' in str(ok):                                           
                     raise ValueError
                 eqn.set(ok)
             elif s in '+-/*':
