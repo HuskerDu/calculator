@@ -1,6 +1,7 @@
 #This file is used for displaying input/output of the equation in the calculator
 
 import rpolish
+import brackets
 
 class Display:
 
@@ -17,11 +18,16 @@ class Display:
             elif s == 'AC':
                 self.equation = ''
                 eqn.set(self.equation)
-            elif s == '=':
-                reverse_polish = rpolish.infix_to_post(self.equation)
-                ok = rpolish.postfix_solve(reverse_polish)
-                self.equation = ''
-                if ok is 'No':
+            elif s == '=':                                               
+                if '(' in self.equation:                                 
+                    if brackets.validate(self.equation):                 
+                        self.equation = brackets.simplify(self.equation) 
+                    else:                                                
+                        raise ValueError                                 
+                reverse_polish = rpolish.infix_to_post(self.equation)    
+                ok = rpolish.postfix_solve(reverse_polish)               
+                self.equation = ''                                       
+                if 'No' in ok:                                           
                     raise ValueError
                 eqn.set(ok)
             elif s in '+-/*':
