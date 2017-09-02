@@ -31,6 +31,9 @@ def graphics(ttk, window, root):
     ttk.Button(window, text='+', command=lambda: disp.get_eqn('+', eqn)).grid(row=4, column=3, sticky=(N, W, E, S))
     ttk.Button(window, text='Del', command=lambda: disp.get_eqn('Del', eqn)).grid(row=1, column=4, sticky=(N, W, E, S))
     ttk.Button(window, text='AC', command=lambda: disp.get_eqn('AC', eqn)).grid(row=2, column=4, sticky=(N, W, E, S))
+    ttk.Button(window, text='(', command=lambda: disp.get_eqn('(', eqn)).grid(row=3, column=4, sticky=(N, W, E, S))
+    ttk.Button(window, text=')', command=lambda: disp.get_eqn(')', eqn)).grid(row=4, column=4, sticky=(N, W, E, S))
+
 
     # Resizing window and making it more responsive
     
@@ -61,5 +64,7 @@ def graphics(ttk, window, root):
     root.bind('-', lambda x: disp.get_eqn('-', eqn))
     root.bind('+', lambda x: disp.get_eqn('+', eqn))
     root.bind('=', lambda x: disp.get_eqn('=', eqn))
+    root.bind('(', lambda x: disp.get_eqn('(', eqn))
+    root.bind(')', lambda x: disp.get_eqn(')', eqn))
     root.bind('<Return>', lambda x: disp.get_eqn('=', eqn))
     root.bind('<BackSpace>', lambda x: disp.get_eqn('Del', eqn))
