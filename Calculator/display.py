@@ -18,6 +18,10 @@ class Display:
             elif s == 'AC':
                 self.equation = ''
                 eqn.set(self.equation)
+            elif s == '(':
+                if self.equation[-2] != ' ':
+                    self.equation = '{} {}'.format(self.equation, '* (')
+                    eqn.set(self.equation)
             elif s == '=':                                               
                 if '(' in self.equation:                                 
                     if brackets.validate(self.equation):                 
