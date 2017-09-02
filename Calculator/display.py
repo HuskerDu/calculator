@@ -14,6 +14,9 @@ class Display:
                     del(self.equation[-1])
                     self.equation = ''.join(self.equation)
                     eqn.set(self.equation)
+            elif s == 'AC':
+                self.equation = ''
+                eqn.set(self.equation)
             elif s == '=':
                 reverse_polish = rpolish.infix_to_post(self.equation)
                 ok = rpolish.postfix_solve(reverse_polish)
