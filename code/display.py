@@ -19,7 +19,7 @@ class Display:
                 self.equation = ''
                 eqn.set(self.equation)
             elif s == '(':
-                if self.equation == '' or self.equation[-1] == '(':
+                if self.equation == '' or self.equation[-1] in '+-(' or self.equation[-2] in '+-/*':
                     self.equation += '('
                     eqn.set(self.equation)
                 elif len(self.equation)>1 and self.equation[-2] not in '+-/*' or len(self.equation) == 1:
